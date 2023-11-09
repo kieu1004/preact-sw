@@ -1,41 +1,34 @@
 import { h } from 'preact';
-import style from './style.css';
+import { Link } from 'preact-router';
+import Card from '../tags/card';
+import style from '../home/style'
 
-const Home = () => {
+export default function (props) {
 	return (
-		<div class={style.home}>
-			<a href="https://preactjs.com">
-				<img src="../../assets/preact-logo.svg" alt="Preact Logo" height="160" width="160" />
-			</a>
-			<h1>Get Started Building PWAs with Preact-CLI</h1>
-			<section>
-				<Resource
-					title="Learn Preact"
-					description="If you're new to Preact, try the interactive tutorial to learn important concepts"
-					link="https://preactjs.com/tutorial/"
-				/>
-				<Resource
-					title="Differences to React"
-					description="If you're coming from React, check out our docs for where Preact differs"
-					link="https://preactjs.com/guide/v10/differences-to-react"
-				/>
-				<Resource
-					title="Learn Preact-CLI"
-					description="To learn more about Preact-CLI, read through the ReadMe & Wiki"
-					link="https://github.com/preactjs/preact-cli#preact-cli--"
-				/>
-			</section>
+		<div class={style['page']}>
+			<Card>
+				<h1>Home</h1>
+				<p>This is the home page.</p>
+
+				<p>You should check out:</p>
+				<nav>
+					<Link href="/foo">Foo</Link>
+					<Link href="/foo/bar">Foo/Bar</Link>
+				</nav>
+			</Card>
+
+			<Card>
+				<h2>Features:</h2>
+				<ul>
+					<li>Offline Caching (via `serviceWorker`)</li>
+					<li>SASS & Autoprefixer</li>
+					<li>Asset Versioning (aka "cache-busting")</li>
+					<li>ES2015 (ES6) and ES2016 (ES7) support</li>
+					<li>Hot Module Replacement (HMR) for all files</li>
+					<li>Preact Developer Tools</li>
+					<li><a href="https://github.com/GoogleChrome/lighthouse" target="_blank" rel="noopener">Lighthouse</a> approved (100/100)</li>
+				</ul>
+			</Card>
 		</div>
 	);
-};
-
-const Resource = props => {
-	return (
-		<a href={props.link} class={style.resource}>
-			<h2>{props.title}</h2>
-			<p>{props.description}</p>
-		</a>
-	);
-};
-
-export default Home;
+}
